@@ -125,7 +125,7 @@ text = "Volume:"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 21.0
+max_value = 16.0
 
 [node name="Volume" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer" unique_id=1350964122]
 custom_minimum_size = Vector2(40, 0)

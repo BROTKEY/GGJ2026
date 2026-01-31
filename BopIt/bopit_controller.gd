@@ -107,8 +107,11 @@ func poll_volume() -> bool:
 
 func set_volume(volume: int) -> void:
 	if is_bopit_connected() and are_services_discovered:
+		print("Setting Volume: ", volume)
+		var data = PackedByteArray([volume])
+		print(data)
 		bopit_device.write_characteristic(
-			BLE_SERVICE, CHARA_SETTING_VOLUME, PackedByteArray([volume]), false)
+			BLE_SERVICE, CHARA_SETTING_VOLUME, data, false)
 
 
 func _ready() -> void:
@@ -202,7 +205,7 @@ func _on_characteristic_written(char_uuid: String):
 
 
 func _on_characteristic_read(char_uuid: String, data: PackedByteArray) -> void:
-	print("[RECV] ", char_uuid, " -> ", data)
+	#print("[RECV] ", char_uuid, " -> ", data)
 	if char_uuid in chara_to_action:
 		assert(data.size() > 0)
 		var action: BopItAction = chara_to_action[char_uuid]

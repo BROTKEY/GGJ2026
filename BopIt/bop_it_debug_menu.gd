@@ -11,11 +11,12 @@ const PULL = BopitController.BopItAction.PULL
 @onready var LabelTwisted = $AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer/Twisted
 @onready var LabelPulled = $AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer/Pulled
 @onready var LabelVolume = $AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer/Volume
+@onready var SliderVolume = $AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer/HSlider
 
 
 var _backup_polling_states = null
 var _do_write_volume = true
-
+var _do_poll_volume = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,7 +37,9 @@ func _process(_delta: float) -> void:
 		LabelBopped.text = str(BopitController.action_flags[BOP])
 		LabelTwisted.text = str(BopitController.action_flags[TWIST])
 		LabelPulled.text = str(BopitController.action_flags[PULL])
-		BopitController.poll_volume()
+		if BopitController.are_services_discovered and _do_poll_volume:
+			BopitController.poll_volume()
+			_do_poll_volume = false
 
 
 func _exit_tree() -> void:
@@ -57,10 +60,11 @@ func _on_pull_it_pressed() -> void:
 
 
 func _on_h_slider_value_changed(value: float) -> void:
+	LabelVolume.text = str(int(value))
 	if _do_write_volume:
 		BopitController.set_volume(int(value))
 
 func _on_volume_received(value: int) -> void:
 	_do_write_volume = false
-	LabelVolume.text = str(value)
+	SliderVolume.value = float(value)
 	_do_write_volume = true
