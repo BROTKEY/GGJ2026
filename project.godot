@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Anomaly"
-run/main_scene="uid://ceqcb0jygysfx"
+run/main_scene="uid://db1hgsm4b4ykw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
