@@ -1,23 +1,16 @@
 extends Node2D
 var objects: Array[PackedScene] = dir_contents("./Scenes/Tiles")
-var tiling: Vector2 = Vector2(3,5)
+var tiling: Vector2 = Vector2(7,4)
 
-func gen_random_pos_in_spawn_area(obj_size: Vector2):
-	var positions = Array(range(0, tiling.y))
-	positions.append_array()
+func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
+	var spawnArea = $Spawn/Objects.shape.size - obj_size
+	var origin = $Spawn/Objects.transform.origin - $Spawn/Objects.shape.size / 2 
+	var x = floor(index / int(tiling.y))
+	var y = index % int(tiling.y)
+	var pix_x = origin.x + x* spawnArea.x/(tiling.x-1)
+	var pix_y = origin.y + y* spawnArea.y/(tiling.y-1)
 	
-	var spawnArea = $Spawn/Objects.shape.size
-	var origin = $Spawn/Objects.transform.origin
-	var side = randi_range(0,3)
-	if side == 0:
-		return Vector2(origin.x - spawnArea.x/2, randf_range(origin.y - spawnArea.y/2, origin.y + spawnArea.y/2 - obj_size.y))
-	if side ==1:
-		return Vector2(randf_range(origin.x - spawnArea.x/2, origin.x + spawnArea.x/2 - obj_size.x), origin.y- spawnArea.y/2)
-	if side == 2:
-		return Vector2(origin.x + spawnArea.x/2 - obj_size.x, randf_range(origin.y - spawnArea.y/2, origin.y + spawnArea.y/2 - obj_size.y))
-	if side == 3:
-		return Vector2(randf_range(origin.x - spawnArea.x/2, origin.x + spawnArea.x/2 - obj_size.x), origin.y + spawnArea.y/2 - obj_size.y)
-
+	return Vector2(pix_x, pix_y)
 
 func dir_contents(path) -> Array[PackedScene]:
 	var scene_loads: Array[PackedScene] = []	
@@ -39,19 +32,26 @@ func dir_contents(path) -> Array[PackedScene]:
 
 	return scene_loads
 	
-func spawn_object() -> void:
+func spawn_object(index: int) -> void:
 	var object = objects.pick_random().instantiate()
 	var scale = object.transform.get_scale()
 	var skew = deg_to_rad(randf_range(-5,5))
 	var size = scale * object.get_child(0).texture.get_size()
-	object.transform = Transform2D(0, scale, 0, gen_random_pos_in_spawn_area(size))
+	object.transform = Transform2D(0, scale, 0, gen_random_pos_in_spawn_area(size, index))
 	$Spawn.add_child(object)
 	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var positions = Array(range(0, tiling.y))
+	for i in range(tiling.x - 2):
+		positions.append(int(tiling.y * (i+1)))
+		positions.append(int(tiling.y* (i+1) + tiling.y-1))
+	positions.append_array(range(tiling.x*tiling.y- tiling.y,  tiling.x*tiling.y))
 	for i in 8:
-		spawn_object()
+		positions.shuffle()
+		var index = positions.pop_front()
+		spawn_object(index)
 	pass
 
 
