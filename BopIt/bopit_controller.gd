@@ -171,7 +171,7 @@ func _on_characteristic_read(char_uuid: String, data: PackedByteArray) -> void:
 	if char_uuid in chara_to_action:
 		assert(data.size() > 0)
 		var action: BopItAction = chara_to_action[char_uuid]
-		action_flags[action] = polling_states[action] and (data[0] == 49)
+		action_flags[action] = polling_states[action] and (data[0] != 0)
 
 
 func disconnect_all() -> void:
