@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bsdug7sr616ks" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://bejhq1xwd8ldr" path="res://Assets/Backdrops/room1.png" id="2_qxrlw"]
+[ext_resource type="Shader" uid="uid://c4io5camlsvi0" path="res://Shaders/torchlight.gdshader" id="3_wrm1d"]
+[ext_resource type="PackedScene" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://d3euypr83m6wr" path="res://light.png" id="5_wowpa"]
 
 [sub_resource type="Gradient" id="Gradient_qxrlw"]
 interpolation_mode = 2
@@ -18,8 +21,21 @@ fill_to = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
 size = Vector2(1677, 859)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wowpa"]
+resource_local_to_scene = true
+shader = ExtResource("3_wrm1d")
+shader_parameter/tex_mask = ExtResource("5_wowpa")
+shader_parameter/radius = 100.0
+shader_parameter/mouse_position = Vector2(0, 0)
+
 [node name="Game" type="Node2D" unique_id=312500295]
+texture_filter = 1
 script = ExtResource("1_ebmjs")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=409190841]
+render_target_update_mode = 4
+
+[node name="ExampleHand" parent="SubViewport" unique_id=608143162 instance=ExtResource("4_3dryh")]
 
 [node name="Background" type="TextureRect" parent="." unique_id=1399968112]
 texture_filter = 1
@@ -48,3 +64,8 @@ height = 500.0
 [node name="Objects" type="CollisionShape2D" parent="Spawn" unique_id=1180804379]
 position = Vector2(967, 547)
 shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="ShadowWorld" type="Node2D" parent="Spawn" unique_id=1581078096]
+
+[node name="RealWorld" type="Node2D" parent="Spawn" unique_id=1859623606]
+material = SubResource("ShaderMaterial_wowpa")

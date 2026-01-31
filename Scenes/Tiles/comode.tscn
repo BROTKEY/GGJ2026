@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://ce3d3p6g2pkfc"]
 
-[ext_resource type="Texture2D" uid="uid://rkre0w2hfcan" path="res://Assets/Furniture/comode_gray.png" id="1_c8nks"]
 [ext_resource type="Texture2D" uid="uid://c8om30qa4a07w" path="res://Assets/Furniture/comode.png" id="1_giknm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c8nks"]
@@ -8,13 +7,6 @@ polygon = PackedVector2Array(2.4999998, 2.4999998, 2.4999998, 36.3, 3.7999997, 3
 
 [node name="Comode" type="Node2D" unique_id=161888056]
 scale = Vector2(5, 5)
-
-[node name="Filtered" type="TextureRect" parent="." unique_id=56221603]
-light_mask = 2
-texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_c8nks")
 
 [node name="Regular" type="TextureRect" parent="." unique_id=1186291024]
 light_mask = 2
