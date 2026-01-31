@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cr3220fv8drhu"]
+
+[ext_resource type="Texture2D" uid="uid://rkre0w2hfcan" path="res://Assets/Furniture/comode_gray.png" id="1_inb5c"]
+[ext_resource type="Texture2D" uid="uid://c8om30qa4a07w" path="res://Assets/Furniture/comode.png" id="2_mjrfy"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c8nks"]
+polygon = PackedVector2Array(2.4999998, 2.4999998, 2.4999998, 36.3, 3.7999997, 36.3, 3.7999997, 37.499996, 9.999999, 37.499996, 9.999999, 36.199997, 11.299999, 36.199997, 11.299999, 31.299997, 28.8, 31.299997, 28.8, 36.3, 29.999998, 36.3, 29.999998, 37.499996, 36.3, 37.499996, 36.3, 36.199997, 37.499996, 36.199997, 37.499996, 2.4999998, 36.3, 2.4999998, 36.3, 1.1999999, 3.7999997, 1.1999999, 3.7999997, 2.4999998)
+
+[node name="Comode" type="Node2D" unique_id=161888056]
+scale = Vector2(10, 10)
+
+[node name="Filtered" type="TextureRect" parent="." unique_id=56221603]
+light_mask = 2
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_inb5c")
+
+[node name="Regular" type="TextureRect" parent="." unique_id=1186291024]
+light_mask = 2
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mjrfy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=121368729]
+occluder = SubResource("OccluderPolygon2D_c8nks")
