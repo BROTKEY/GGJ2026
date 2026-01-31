@@ -20,3 +20,6 @@ mono_crash.*.json
 # other stuff
 .vscode/
 __pycache__/
+
+# addon
+/addons/**/~*.dll

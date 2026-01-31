@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cvxhhg5as5tyw"]
+
+[ext_resource type="Shader" uid="uid://c4io5camlsvi0" path="res://Shaders/torchlight.gdshader" id="1_isk6w"]
+
+[resource]
+shader = ExtResource("1_isk6w")
+shader_parameter/radius = 0.0
+shader_parameter/mouse_position = Vector2(0, 0)
