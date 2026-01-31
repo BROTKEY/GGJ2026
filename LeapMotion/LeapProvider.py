@@ -65,7 +65,8 @@ class LeapListener(leap.Listener):
             "palm": {
                 "position": (0, 0, 0),
                 "normal": (0, 0, 0),
-                "direction": (0, 0, 0)
+                "direction": (0, 0, 0),
+                "orientation": (0, 0, 0, 0)
             },
             "thumb": {
                 "metacarpal": {
@@ -183,7 +184,8 @@ class LeapListener(leap.Listener):
             "palm": {
                 "position": (0, 0, 0),
                 "normal": (0, 0, 0),
-                "direction": (0, 0, 0)
+                "direction": (0, 0, 0),
+                "orientation": (0, 0, 0, 0)
             },
             "thumb": {
                 "metacarpal": {
@@ -317,7 +319,10 @@ class LeapListener(leap.Listener):
             self.hand_data["pinch_distance"] = hand.pinch_distance
             for prop in self.hand_data[handt]["palm"].keys():
                 vec = getattr(hand.palm, prop)
-                self.hand_data[handt]["palm"][prop] = (vec.x, vec.y, vec.z)
+                if prop == "orientation":
+                    self.hand_data[handt]["palm"][prop] = (vec.x, vec.y, vec.z, vec.w)
+                else:
+                    self.hand_data[handt]["palm"][prop] = (vec.x, vec.y, vec.z)
             
             for finger in ["thumb", "index", "middle", "ring", "pinky"]:
                 for bone in self.hand_data[handt][finger].keys():

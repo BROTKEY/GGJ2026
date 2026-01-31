@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 fullscreen="*uid://dhgfkjy1jik6l"
 BopitController="*uid://tdi87mmu2kn"
+LeapMotionClient="*uid://vuy4kkinu6l2"
 
 [display]
 
