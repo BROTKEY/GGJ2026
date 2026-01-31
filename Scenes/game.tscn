@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ceqcb0jygysfx"]
+
+[ext_resource type="Script" uid="uid://bsdug7sr616ks" path="res://Scripts/game.gd" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://bejhq1xwd8ldr" path="res://Assets/Backdrops/room1.png" id="2_qxrlw"]
+
+[sub_resource type="Gradient" id="Gradient_qxrlw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.45432693, 0.97836536, 0.99278843, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.4110577, 0.4110577, 0.4110577, 1, 0.268311, 0.268311, 0.268311, 1, 0.077896744, 0.077896744, 0.077896744, 1, 0, 0, 0, 1)
+metadata/_snap_count = 21
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wrm1d"]
+gradient = SubResource("Gradient_qxrlw")
+fill = 1
+fill_from = Vector2(0.029513888, 0.1892361)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(1677, 859)
+
+[node name="Game" type="Node2D" unique_id=312500295]
+script = ExtResource("1_ebmjs")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1399968112]
+texture_filter = 1
+offset_right = 192.0
+offset_bottom = 108.0
+scale = Vector2(10, 10)
+texture = ExtResource("2_qxrlw")
+
+[node name="Shading" type="CanvasModulate" parent="." unique_id=835482339]
+
+[node name="MoodLight" type="PointLight2D" parent="." unique_id=707887225]
+position = Vector2(-0.07167971, -0.066110805)
+scale = Vector2(0.9911264, 0.55436355)
+color = Color(0.14117648, 0.34901962, 0, 1)
+energy = 1.24
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_wrm1d")
+offset = Vector2(970, 970)
+texture_scale = 30.29
+height = 500.0
+
+[node name="Spawn" type="Area2D" parent="." unique_id=2092062423]
+
+[node name="Objects" type="CollisionShape2D" parent="Spawn" unique_id=1180804379]
+position = Vector2(967, 547)
+shape = SubResource("RectangleShape2D_qxrlw")
