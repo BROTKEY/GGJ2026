@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dxttr5tv6rbhp"]
+
+[ext_resource type="Script" uid="uid://cj4wxhsri2qp1" path="res://BopIt/bop_it_debug_menu.gd" id="1_okyaq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_780w2"]
+bg_color = Color(1, 0.2850479, 0.5587493, 1)
+
+[node name="BopItDebugMenu" type="Control" unique_id=1291644865]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_okyaq")
+
+[node name="Panel" type="Panel" parent="." unique_id=2127479387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=118744712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.5
+
+[node name="Margin" type="MarginContainer" parent="AspectRatioContainer" unique_id=773007717]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="AspectRatioContainer/Margin" unique_id=1819900675]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_780w2")
+
+[node name="Margin" type="MarginContainer" parent="AspectRatioContainer/Margin" unique_id=1588081566]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 26
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/Margin/Margin" unique_id=854873363]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/Margin/Margin/VBoxContainer" unique_id=1284613572]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=2048392696]
+layout_mode = 2
+text = "Connected:"
+
+[node name="Connected" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=857157211]
+layout_mode = 2
+text = "False"
+
+[node name="Label3" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=1818058483]
+layout_mode = 2
+text = "Bopped:"
+
+[node name="Bopped" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=841099674]
+layout_mode = 2
+text = "False"
+
+[node name="Label4" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=470253490]
+layout_mode = 2
+text = "Twisted:"
+
+[node name="Twisted" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=1412588428]
+layout_mode = 2
+text = "False"
+
+[node name="Label5" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=164391792]
+layout_mode = 2
+text = "Pulled:"
+
+[node name="Pulled" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/GridContainer" unique_id=494794809]
+layout_mode = 2
+text = "False"
+
+[node name="Label" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer" unique_id=532904382]
+layout_mode = 2
+text = "
+Sounds"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="AspectRatioContainer/Margin/Margin/VBoxContainer" unique_id=1150485318]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="BopIt" type="Button" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer" unique_id=467772966]
+layout_mode = 2
+text = "Bop It!"
+
+[node name="TwistId" type="Button" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer" unique_id=532071672]
+layout_mode = 2
+text = "Twist It!"
+
+[node name="PullIt" type="Button" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer" unique_id=75595800]
+layout_mode = 2
+text = "Pull It!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/Margin/Margin/VBoxContainer" unique_id=919893382]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer" unique_id=598682941]
+layout_mode = 2
+text = "Volume:"
+
+[node name="HSlider" type="HSlider" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer" unique_id=1430999134]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 21.0
+
+[node name="Volume" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer" unique_id=1350964122]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "0"
+
+[connection signal="pressed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer/BopIt" to="." method="_on_bop_it_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer/TwistId" to="." method="_on_twist_id_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer/PullIt" to="." method="_on_pull_it_pressed"]
+[connection signal="value_changed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

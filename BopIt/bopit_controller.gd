@@ -11,8 +11,13 @@ var scan_duration = 10.0 # Scan duration in Seconds
 var autoconnect = false # Automatically start scan when initialized
 
 
+signal volume_received(volume: int)
+
+
 var ble: BluetoothManager = null
 var bopit_device: BleDevice = null
+var are_services_discovered = false
+
 
 const BLE_SERVICE = "12345678-1234-1234-1234-1234567890ab"
 
@@ -62,6 +67,16 @@ const chara_to_action = {
 	CHARA_GET_PULL: BopItAction.PULL,
 }
 
+const action_to_sound = {
+	BopItAction.BOP: CHARA_PLAY_BOP,
+	BopItAction.TWIST: CHARA_PLAY_TWIST,
+	BopItAction.PULL: CHARA_PLAY_PULL,
+}
+
+
+func is_bopit_connected() -> bool:
+	return (bopit_device != null) && bopit_device.is_connected()
+
 
 func start_scan() -> void:
 	ble.start_scan(scan_duration)
@@ -75,6 +90,25 @@ func enable_polling(action: BopItAction) -> void:
 func disable_polling(action: BopItAction) -> void:
 	polling_states[action] = false
 	action_flags[action] = false
+
+
+func play_sound(action: BopItAction) -> void:
+	if is_bopit_connected() and are_services_discovered:
+		bopit_device.write_characteristic(
+			BLE_SERVICE, action_to_sound[action], PackedByteArray([1]), false)
+
+
+func poll_volume() -> bool:
+	if is_bopit_connected() and are_services_discovered:
+		bopit_device.read_characteristic(BLE_SERVICE, CHARA_SETTING_VOLUME)
+		return true
+	return false
+
+
+func set_volume(volume: int) -> void:
+	if is_bopit_connected() and are_services_discovered:
+		bopit_device.write_characteristic(
+			BLE_SERVICE, CHARA_SETTING_VOLUME, PackedByteArray([volume]), false)
 
 
 func _ready() -> void:
@@ -91,7 +125,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if bopit_device != null and bopit_device.is_connected():
+	if is_bopit_connected() and are_services_discovered:
 		if polling_states[BopItAction.BOP]:
 			bopit_device.read_characteristic(BLE_SERVICE, CHARA_GET_BOP)
 		if polling_states[BopItAction.TWIST]:
@@ -150,6 +184,7 @@ func _on_device_connected():
 
 func _on_services_discovered(services: Array):
 	print("Discovered ", services.size(), " services")
+	are_services_discovered = true
 	
 	# Iterate through services and characteristics
 	for service in services:
@@ -172,6 +207,10 @@ func _on_characteristic_read(char_uuid: String, data: PackedByteArray) -> void:
 		assert(data.size() > 0)
 		var action: BopItAction = chara_to_action[char_uuid]
 		action_flags[action] = polling_states[action] and (data[0] != 0)
+	elif char_uuid == CHARA_SETTING_VOLUME:
+		assert(data.size() > 0)
+		var volume = data[0]
+		volume_received.emit(volume)
 
 
 func disconnect_all() -> void:
