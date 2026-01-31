@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://h8qe166xajvu"]
+
+[ext_resource type="PackedScene" uid="uid://cgbguqsasr0f4" path="res://rigged_hand.glb" id="1_e0pv1"]
+[ext_resource type="Script" uid="uid://bk2mbnis5dov6" path="res://leaphand.gd" id="1_ty1m2"]
+
+[node name="HandScene" type="Node3D" unique_id=1344022244]
+script = ExtResource("1_ty1m2")
+
+[node name="Hand" parent="." unique_id=573401001 instance=ExtResource("1_e0pv1")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1146728124]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.7355065, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1174423642]

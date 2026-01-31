@@ -1,3 +1,4 @@
+class_name LeapMotion
 extends Node
 
 var _status: int = 0
@@ -11,7 +12,14 @@ func open(host: String, port: int) -> bool:
 	if _stream.connect_to_host(host, port) != OK:
 		print("LeapMotion: Error connecting to the LeapProvider!")
 		return false
-	return true
+	_stream.poll()
+	_status = _stream.get_status()
+	if _status == _stream.STATUS_CONNECTED:
+		print("LeapMotion: Connected to LeapProvider!")
+		return true
+	else:
+		print("LeapMotion: Error connecting to the LeapProvider!")
+		return false
 	
 func poll() -> bool:
 	_stream.poll()
