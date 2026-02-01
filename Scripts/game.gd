@@ -2,7 +2,6 @@ extends Node2D
 var objects = dir_contents("./Scenes/Tiles")
 var tiling: Vector2 = Vector2(7,4)
 
-<<<<<<< HEAD
 func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
 	var spawnArea = $Spawn/Objects.shape.size - obj_size
 	var origin = $Spawn/Objects.transform.origin - $Spawn/Objects.shape.size / 2 
@@ -10,11 +9,6 @@ func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
 	var y = index % int(tiling.y)
 	var pix_x = origin.x + x* spawnArea.x/(tiling.x-1)
 	var pix_y = origin.y + y* spawnArea.y/(tiling.y-1)
-=======
-func gen_random_pos_in_spawn_area(obj_size: Vector2):
-	var positions = Array(range(0, tiling.y))
-	#positions.append_array()
->>>>>>> 63ef0b7 (add the firstperson view)
 	
 	return Vector2(pix_x, pix_y)
 
@@ -57,11 +51,7 @@ func spawn_object(index: int) -> void:
 	$Spawn/RealWorld.add_child(real_object)
 	$Spawn/ShadowWorld.add_child(shadow_object)
 	
-func openFirstPerson() -> void:
-	var simultaneous_scene = preload("res://Scenes/firstperson/firstperson.tscn").instantiate()
-	add_child(simultaneous_scene)
-	simultaneous_scene.z_index = 2;
-
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var positions = Array(range(0, tiling.y))
@@ -73,8 +63,6 @@ func _ready() -> void:
 		positions.shuffle()
 		var index = positions.pop_front()
 		spawn_object(index)
-	#openFirstPerson()
-	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
