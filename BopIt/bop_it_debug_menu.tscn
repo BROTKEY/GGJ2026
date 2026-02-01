@@ -132,7 +132,23 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "0"
 
+[node name="LabelLang" type="Label" parent="AspectRatioContainer/Margin/Margin/VBoxContainer" unique_id=244970794]
+layout_mode = 2
+text = "
+Language"
+
+[node name="OptionButton" type="OptionButton" parent="AspectRatioContainer/Margin/Margin/VBoxContainer" unique_id=170042006]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "en"
+popup/item_0/id = 0
+popup/item_1/text = "de"
+popup/item_1/id = 1
+popup/item_2/text = "fr"
+popup/item_2/id = 2
+
 [connection signal="pressed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer/BopIt" to="." method="_on_bop_it_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer/TwistId" to="." method="_on_twist_id_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HFlowContainer/PullIt" to="." method="_on_pull_it_pressed"]
 [connection signal="value_changed" from="AspectRatioContainer/Margin/Margin/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="AspectRatioContainer/Margin/Margin/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

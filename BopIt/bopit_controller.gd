@@ -12,6 +12,7 @@ var autoconnect = true # Automatically start scan when initialized
 
 
 signal volume_received(volume: int)
+signal language_received(language: String)
 
 
 var ble: BluetoothManager = null
@@ -113,6 +114,12 @@ func poll_volume() -> bool:
 		bopit_device.read_characteristic(BLE_SERVICE, CHARA_SETTING_VOLUME)
 		return true
 	return false
+	
+func poll_lang() -> bool:
+	if is_bopit_connected() and are_services_discovered:
+		bopit_device.read_characteristic(BLE_SERVICE, CHARA_SETTING_LANG)
+		return true
+	return false
 
 
 func set_volume(volume: int) -> void:
@@ -122,6 +129,12 @@ func set_volume(volume: int) -> void:
 		print(data)
 		bopit_device.write_characteristic(
 			BLE_SERVICE, CHARA_SETTING_VOLUME, data, false)
+
+func set_language(language: String) -> void:
+	if is_bopit_connected() and are_services_discovered:
+		print("Setting Language: ", language)
+		var data = language.to_ascii_buffer()
+		bopit_device.write_characteristic(BLE_SERVICE, CHARA_SETTING_LANG, data, false)
 
 
 func _ready() -> void:
@@ -227,6 +240,10 @@ func _on_characteristic_read(char_uuid: String, data: PackedByteArray) -> void:
 		assert(data.size() > 0)
 		var volume = data[0]
 		volume_received.emit(volume)
+	elif char_uuid == CHARA_SETTING_LANG:
+		assert(data.size() > 0)
+		var lang: String = data.get_string_from_utf8()
+		language_received.emit(lang)
 
 
 func disconnect_all() -> void:
