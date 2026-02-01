@@ -82,6 +82,16 @@ func start_scan() -> void:
 	ble.start_scan(scan_duration)
 
 
+func enable_polling_all() -> void:
+	enable_polling(BopItAction.BOP)
+	enable_polling(BopItAction.PULL)
+	enable_polling(BopItAction.TWIST)
+	
+func disable_polling_all() -> void:
+	disable_polling(BopItAction.BOP)
+	disable_polling(BopItAction.PULL)
+	disable_polling(BopItAction.TWIST)
+
 func enable_polling(action: BopItAction) -> void:
 	action_flags[action] = false
 	polling_states[action] = true
