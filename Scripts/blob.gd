@@ -7,6 +7,7 @@ var bopit_action: String;
 
 var playerHasScrewedUp = false
 var defeated = false
+var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +21,7 @@ func ActivateMonster() -> void:
 	sprite.play("default")
 	sprite.show()
 	attack_timer.start()
+	active = true
 	$"/root/BopitController".enable_polling_all()
 
 func MonsterRevealed() -> void:
@@ -40,6 +42,9 @@ func make_defeat() -> void:
 	sprite.play("dying")
 
 func AnimationFinished() -> void:
+	if !active:
+		return
+	
 	# TODO go to game over
 	if playerHasScrewedUp:
 		var container = get_node("/root/MainMenu")
@@ -63,6 +68,9 @@ enum BopItAction
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !active || defeated || playerHasScrewedUp:
+		return
+
 	var bop: bool = $"/root/BopitController".action_flags[BopItAction.BOP]
 	var twist: bool = $"/root/BopitController".action_flags[BopItAction.TWIST]
 	var pull: bool = $"/root/BopitController".action_flags[BopItAction.PULL]

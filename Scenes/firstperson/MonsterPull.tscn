@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dh482188jgebd"]
+
+[ext_resource type="Script" uid="uid://cvxv2mlw82qs8" path="res://Scripts/blob.gd" id="1_xk3th"]
+[ext_resource type="Texture2D" uid="uid://o4whive4h7nh" path="res://Assets/Monster/blue/blueenemy_0.png" id="2_m4n8d"]
+[ext_resource type="Texture2D" uid="uid://dkad3b31t4cp4" path="res://Assets/Monster/blue/blueenemy_2.png" id="3_teq12"]
+[ext_resource type="Texture2D" uid="uid://xrrv863v104m" path="res://Assets/Monster/blue/blueenemy_3.png" id="4_x47nq"]
+[ext_resource type="Texture2D" uid="uid://yolsmbxpa47f" path="res://Assets/Monster/blue/blueenemy_4.png" id="5_xk3th"]
+[ext_resource type="Texture2D" uid="uid://b51uhwvirm1m8" path="res://Assets/Monster/blue/blueenemy_1.png" id="6_cqly5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fun41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m4n8d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_teq12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x47nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xk3th")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m4n8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cqly5")
+}],
+"loop": true,
+"name": &"jumpscare",
+"speed": 9.0
+}]
+
+[node name="MonsterPull" type="Node2D" unique_id=95978076]
+script = ExtResource("1_xk3th")
+metadata/BopitAction = "PULL"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1941309922]
+sprite_frames = SubResource("SpriteFrames_fun41")
+animation = &"jumpscare"
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1544280131]
+wait_time = 25.0
+
+[node name="RevealTimer" type="Timer" parent="." unique_id=1257436170]
+wait_time = 4.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="AnimationFinished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="AnimationFinished"]
+[connection signal="timeout" from="AttackTimer" to="." method="TriggerJumpscare"]
