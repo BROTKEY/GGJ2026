@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b605enkgjyirl" path="res://Assets/Furniture/comode2_shadow.png" id="2_hxc7d"]
 [ext_resource type="PackedScene" uid="uid://cnp4cdawh2u7u" path="res://Scenes/firstperson/MonsterBlob.tscn" id="3_ef584"]
 [ext_resource type="PackedScene" uid="uid://dh482188jgebd" path="res://Scenes/firstperson/MonsterPull.tscn" id="4_8hr10"]
+[ext_resource type="PackedScene" uid="uid://bpfisumb4modd" path="res://Scenes/firstperson/MonsterTwist.tscn" id="5_3mii2"]
 
 [node name="Comode" type="Node2D" unique_id=1483926918]
 script = ExtResource("1_hxc7d")
@@ -25,3 +26,15 @@ position = Vector2(1328, 972)
 
 [node name="MonsterBlob4" parent="." unique_id=234750071 instance=ExtResource("4_8hr10")]
 position = Vector2(1160, 407)
+
+[node name="MonsterPull" parent="." unique_id=1952175710 instance=ExtResource("5_3mii2")]
+position = Vector2(846, 389)
+
+[node name="MonsterPull2" parent="." unique_id=1337443936 instance=ExtResource("5_3mii2")]
+position = Vector2(482, 960)
+
+[node name="MonsterPull3" parent="." unique_id=1927324324 instance=ExtResource("5_3mii2")]
+position = Vector2(721, 591)
+
+[node name="MonsterPull4" parent="." unique_id=1001086481 instance=ExtResource("4_8hr10")]
+position = Vector2(763, 765)

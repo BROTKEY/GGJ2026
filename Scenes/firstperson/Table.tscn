@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://gyit2jeppw18" path="res://Scripts/selectMonsterFromFurniture.gd" id="1_tcj21"]
 [ext_resource type="PackedScene" uid="uid://cnp4cdawh2u7u" path="res://Scenes/firstperson/MonsterBlob.tscn" id="2_tcj21"]
 [ext_resource type="PackedScene" uid="uid://dh482188jgebd" path="res://Scenes/firstperson/MonsterPull.tscn" id="3_0r8dn"]
+[ext_resource type="PackedScene" uid="uid://bpfisumb4modd" path="res://Scenes/firstperson/MonsterTwist.tscn" id="5_0r8dn"]
 
 [node name="Table" type="Node2D" unique_id=431555725]
 script = ExtResource("1_tcj21")
@@ -20,8 +21,14 @@ position = Vector2(894, 1011)
 [node name="MonsterBlob2" parent="." unique_id=580675405 instance=ExtResource("2_tcj21")]
 position = Vector2(760, 609)
 
-[node name="MonsterBlob3" parent="." unique_id=1135903441 instance=ExtResource("2_tcj21")]
-position = Vector2(1076, 530)
-
 [node name="MonsterPull" parent="." unique_id=991628306 instance=ExtResource("3_0r8dn")]
-position = Vector2(860, 301)
+position = Vector2(931, 505)
+
+[node name="MonsterPull2" parent="." unique_id=1247261073 instance=ExtResource("3_0r8dn")]
+position = Vector2(1142, 941)
+
+[node name="MonsterPull3" parent="." unique_id=1699126720 instance=ExtResource("5_0r8dn")]
+position = Vector2(625, 942)
+
+[node name="MonsterPull4" parent="." unique_id=2085458198 instance=ExtResource("5_0r8dn")]
+position = Vector2(1037, 703)
