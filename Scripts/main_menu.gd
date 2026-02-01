@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 		var denug_menu = preload("res://BopIt/bop_it_debug_menu.tscn").instantiate()
 
 func show_game_over() -> void:
-	for c in find_child("gameContainer"):
+	for c in find_child("gameContainer").get_children():
 		c.hide()
 		c.queue_free()
 
@@ -34,7 +34,7 @@ func show_game_over() -> void:
 
 func return_from_game_session() -> void:
 	var gameContainer = find_child("gameContainer")
-	for c in find_child("gameContainer"):
+	for c in gameContainer.get_children():
 		c.hide()
 		c.queue_free()
 	gameContainer.hide()
