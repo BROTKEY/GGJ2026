@@ -37,7 +37,7 @@ func reload_level() -> void:
 	load_level()
 	
 func _on_play_pressed() -> void:
-	load_level()
+	load_fade_in()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

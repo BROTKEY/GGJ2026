@@ -46,8 +46,8 @@ func spawn_object(index: int, real: bool) -> void:
 	var shadow_object = object_pair[1].instantiate()
 	
 	var uuid_name = UUID.v7()
-	real_object.name = uuid_name + "_" + real_object.name
 	shadow_object.name = uuid_name + "_" + real_object.name
+	real_object.name = uuid_name + "_" + real_object.name
 	
 	var scale = real_object.transform.get_scale()
 	var skew = deg_to_rad(randf_range(-5,5))
@@ -72,7 +72,7 @@ func return_from_firstperson() -> void:
 	var empty = len($ShadowWorld.get_children()) == len($RealWorld.get_children())
 	if empty:
 		var container = get_node("/root/MainMenu")
-		container.reload_level()
+		container.load_fade_in()
 		
 	show()
 	find_child("RenderLayer").show()
