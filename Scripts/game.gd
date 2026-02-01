@@ -63,11 +63,17 @@ func enter_firstperson() -> void:
 	var simultaneous_scene = preload("res://Scenes/firstperson/firstperson.tscn").instantiate()
 	get_parent().add_child(simultaneous_scene)
 	find_child("RenderLayer").hide()
-	ignore_input = false
+	ignore_input = true
 	hide()
 	
 func return_from_firstperson() -> void:
 	ignore_input = false
+	
+	var empty = len($ShadowWorld.get_children()) == len($RealWorld.get_children())
+	if empty:
+		var container = get_node("/root/MainMenu")
+		container.reload_level()
+		
 	show()
 	find_child("RenderLayer").show()
 
@@ -112,7 +118,3 @@ func _input(event: InputEvent) -> void:
 						return
 				$ShadowWorld.remove_child(obj)
 				enter_firstperson()
-				
-			
-		
-		

@@ -10,12 +10,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func _on_play_pressed() -> void:
+func load_level() -> void:
 	var gameContainer = find_child("gameContainer")
 	var simultaneous_scene = preload("res://Scenes/game.tscn").instantiate()
 	gameContainer.add_child(simultaneous_scene)
 	gameContainer.show()
 	find_child("menuContainer").hide()
+	
+func reload_level() -> void:
+	for c in find_child("gameContainer").get_children():
+		c.hide()
+		c.queue_free()
+	load_level()
+	
+func _on_play_pressed() -> void:
+	load_level()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
