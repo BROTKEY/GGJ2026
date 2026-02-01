@@ -8,7 +8,7 @@ var bopit_device_name = "BopIt-ESP32" # Name of the BLE device
 var scan_duration = 10.0 # Scan duration in Seconds
 
 @export
-var autoconnect = false # Automatically start scan when initialized
+var autoconnect = true # Automatically start scan when initialized
 
 
 signal volume_received(volume: int)
