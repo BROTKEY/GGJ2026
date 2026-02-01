@@ -46,8 +46,8 @@ func spawn_object(index: int, real: bool) -> void:
 	var shadow_object = object_pair[1].instantiate()
 	
 	var uuid_name = UUID.v7()
-	real_object.name = uuid_name + "_" + real_object.name
 	shadow_object.name = uuid_name + "_" + real_object.name
+	real_object.name = uuid_name + "_" + real_object.name
 	
 	var scale = real_object.transform.get_scale()
 	var skew = deg_to_rad(randf_range(-5,5))
@@ -59,9 +59,10 @@ func spawn_object(index: int, real: bool) -> void:
 		$RealWorld.add_child(real_object)
 	$ShadowWorld.add_child(shadow_object)
 
-func enter_firstperson() -> void:
+func enter_firstperson(type: String) -> void:
 	var simultaneous_scene = preload("res://Scenes/firstperson/firstperson.tscn").instantiate()
 	get_parent().add_child(simultaneous_scene)
+	simultaneous_scene.set_variant(type)
 	find_child("RenderLayer").hide()
 	ignore_input = true
 	hide()
@@ -72,7 +73,7 @@ func return_from_firstperson() -> void:
 	var empty = len($ShadowWorld.get_children()) == len($RealWorld.get_children())
 	if empty:
 		var container = get_node("/root/MainMenu")
-		container.reload_level()
+		container.load_fade_in()
 		
 	show()
 	find_child("RenderLayer").show()
@@ -117,4 +118,5 @@ func _input(event: InputEvent) -> void:
 					if objs.name == obj.name:
 						return
 				$ShadowWorld.remove_child(obj)
-				enter_firstperson()
+				
+				enter_firstperson(obj.name.split("_")[1])

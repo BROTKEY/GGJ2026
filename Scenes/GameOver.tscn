@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://vvtapqla2rxv"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_m5628"]
+[ext_resource type="Texture2D" uid="uid://cmu3ipeebkmqf" path="res://Assets/Monster/blob/blob_2.png" id="2_k52d1"]
 
 [node name="GameOver" type="Control" unique_id=1560092777]
 layout_mode = 3
@@ -11,21 +12,47 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m5628")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1082802679]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1447438708]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 66.0
-offset_right = 1814.0
-offset_bottom = 739.0
-text = "Game Over"
-fit_content = true
+offset_right = 1957.0
+offset_bottom = 1124.0
+color = Color(0, 0, 0, 1)
 
 [node name="New Game" type="Button" parent="." unique_id=934017760]
 layout_mode = 0
-offset_left = 48.0
-offset_top = 103.0
-offset_right = 163.0
-offset_bottom = 140.0
+offset_left = 838.0
+offset_top = 451.0
+offset_right = 1147.0
+offset_bottom = 551.0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
 text = "New Game"
+
+[node name="Label" type="Label" parent="." unique_id=1537026103]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 117.0
+offset_right = 1565.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1306279737]
+layout_mode = 0
+offset_left = 62.000008
+offset_top = 506.0
+offset_right = 586.9125
+offset_bottom = 1045.4031
+rotation = -0.3700098
+texture = ExtResource("2_k52d1")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1281348639]
+layout_mode = 0
+offset_left = 1420.0
+offset_top = 350.0
+offset_right = 1944.9124
+offset_bottom = 889.4032
+rotation = 0.424115
+texture = ExtResource("2_k52d1")
 
 [connection signal="pressed" from="New Game" to="." method="_on_new_game_pressed"]
