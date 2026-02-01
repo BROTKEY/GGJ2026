@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://vvtapqla2rxv"]
 
+[ext_resource type="Script" uid="uid://d1q1t2yjc6w12" path="res://Scripts/game_over.gd" id="1_m5628"]
+
 [node name="GameOver" type="Control" unique_id=1560092777]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_m5628")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1082802679]
 layout_mode = 0
@@ -16,3 +19,13 @@ offset_right = 1814.0
 offset_bottom = 739.0
 text = "Game Over"
 fit_content = true
+
+[node name="New Game" type="Button" parent="." unique_id=934017760]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 103.0
+offset_right = 163.0
+offset_bottom = 140.0
+text = "New Game"
+
+[connection signal="pressed" from="New Game" to="." method="_on_new_game_pressed"]

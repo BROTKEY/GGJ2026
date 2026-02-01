@@ -30,10 +30,8 @@ func TriggerJumpscare() -> void:
 func AnimationFinished() -> void:
 	# TODO go to game over
 	if playerHasScrewedUp:
-		var simultaneous_scene = preload("res://Scenes/GameOver.tscn").instantiate()
-		var container = get_tree().find_child("gameContainer", true)
-		container.get_child(0).queue_free()
-		container.add_child(simultaneous_scene)
+		var container = get_node("/root/MainMenu")
+		container.show_game_over()
 	
 	
 	pass

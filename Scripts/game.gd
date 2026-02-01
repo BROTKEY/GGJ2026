@@ -9,7 +9,7 @@ func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
 	var y = index % int(tiling.y)
 	var pix_x = origin.x + x* spawnArea.x/(tiling.x-1)
 	var pix_y = origin.y + y* spawnArea.y/(tiling.y-1)
-	
+
 	return Vector2(pix_x, pix_y)
 
 func dir_contents(path) -> Array:
