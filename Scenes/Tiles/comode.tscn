@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c8om30qa4a07w" path="res://Assets/Furniture/comode.png" id="1_giknm"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c8nks"]
-polygon = PackedVector2Array(2.4999998, 2.4999998, 2.4999998, 36.3, 3.7999997, 36.3, 3.7999997, 37.499996, 9.999999, 37.499996, 9.999999, 36.199997, 11.299999, 36.199997, 11.299999, 31.299997, 28.8, 31.299997, 28.8, 36.3, 29.999998, 36.3, 29.999998, 37.499996, 36.3, 37.499996, 36.3, 36.199997, 37.499996, 36.199997, 37.499996, 2.4999998, 36.3, 2.4999998, 36.3, 1.1999999, 3.7999997, 1.1999999, 3.7999997, 2.4999998)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giknm"]
+size = Vector2(35.200005, 36.200005)
 
 [node name="Comode" type="Node2D" unique_id=161888056]
 scale = Vector2(5, 5)
@@ -15,5 +15,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_giknm")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=121368729]
-occluder = SubResource("OccluderPolygon2D_c8nks")
+[node name="Comode" type="Area2D" parent="." unique_id=933034219]
+position = Vector2(20.4, 21.8)
+
+[node name="Collider" type="CollisionShape2D" parent="Comode" unique_id=321329741]
+position = Vector2(-0.40000153, -2.5)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_giknm")
