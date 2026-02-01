@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h8qe166xajvu"]
 
-[ext_resource type="PackedScene" uid="uid://cgbguqsasr0f4" path="res://rigged_hand.glb" id="1_e0pv1"]
+[ext_resource type="PackedScene" uid="uid://bsmwb3n6fsm3j" path="res://Assets/Models/rigged_hand.glb" id="1_e0pv1"]
 [ext_resource type="Script" uid="uid://bk2mbnis5dov6" path="res://leaphand.gd" id="1_ty1m2"]
 
 [node name="HandScene" type="Node3D" unique_id=1344022244]
