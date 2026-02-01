@@ -44,6 +44,11 @@ func spawn_object(index: int) -> void:
 	var object_pair = objects.pick_random()
 	var real_object = object_pair[0].instantiate()
 	var shadow_object = object_pair[1].instantiate()
+	
+	var uuid_name = UUID.v7()
+	real_object.name = uuid_name
+	shadow_object.name = uuid_name
+	
 	var scale = real_object.transform.get_scale()
 	var skew = deg_to_rad(randf_range(-5,5))
 	var size = scale * real_object.get_child(0).texture.get_size()
@@ -76,7 +81,6 @@ func _ready() -> void:
 		positions.shuffle()
 		var index = positions.pop_front()
 		spawn_object(index)
-	enter_firstperson()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -88,7 +92,7 @@ func _process(_delta: float) -> void:
 	
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and !ignore_input:
 		var mouse_pos = get_global_mouse_position()
 		if LeapMotionClient.hand_position != null:
 			mouse_pos = LeapMotionClient.hand_position * Vector2(1920, 1080)
@@ -101,7 +105,13 @@ func _input(event: InputEvent) -> void:
 			var position = obj.position + size / 2
 			var distance = mouse_pos.distance_to(position)
 			if distance < interact_radius:
-				print("UWUWUWUW")
+				var objectss: Array[Node] = $ShadowWorld.get_children()
+				for objs in objectss:
+					if objs.name == obj.name:
+						$ShadowWorld.remove_child(objs)
+				$RealWorld.remove_child(obj)
+				enter_firstperson()
+				
 			
 		
 		
