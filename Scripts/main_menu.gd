@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 func _on_play_pressed() -> void:
 	var simultaneous_scene = preload("res://Scenes/game.tscn").instantiate()
 	find_child("gameContainer").add_child(simultaneous_scene)
+	find_child("menuContainer").hide()
 	
 func _on_quit_pressed() -> void:
 	get_tree().quit()

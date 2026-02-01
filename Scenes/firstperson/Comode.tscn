@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b4ml5fu5x22ha"]
+
+[ext_resource type="Script" uid="uid://gyit2jeppw18" path="res://Scripts/selectMonsterFromFurniture.gd" id="1_1c242"]
+[ext_resource type="Texture2D" uid="uid://c8om30qa4a07w" path="res://Assets/Furniture/comode.png" id="1_qvcw8"]
+[ext_resource type="PackedScene" uid="uid://cnp4cdawh2u7u" path="res://Scenes/firstperson/MonsterBlob.tscn" id="2_1c242"]
+
+[node name="Comode" type="Node2D" unique_id=1483926918]
+script = ExtResource("1_1c242")
+
+[node name="commode" type="Sprite2D" parent="." unique_id=1605079999]
+texture_filter = 1
+position = Vector2(921.00006, 675)
+scale = Vector2(26.78125, 24.375)
+texture = ExtResource("1_qvcw8")
+
+[node name="MonsterBlob" parent="." unique_id=95978076 instance=ExtResource("2_1c242")]
+position = Vector2(1051, 941)
+
+[node name="MonsterBlob2" parent="." unique_id=580348850 instance=ExtResource("2_1c242")]
+position = Vector2(672, 421)

@@ -12,7 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_853f1")
 
-[node name="Play" type="Button" parent="." unique_id=1771572091]
+[node name="gameContainer" type="Node2D" parent="." unique_id=515340582]
+z_index = 1
+
+[node name="menuContainer" type="Control" parent="." unique_id=625866433]
+anchors_preset = 0
+
+[node name="Play" type="Button" parent="menuContainer" unique_id=1771572091]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 401.0
@@ -20,7 +26,7 @@ offset_right = 300.0
 offset_bottom = 518.0
 text = "Play"
 
-[node name="Quit" type="Button" parent="." unique_id=954276911]
+[node name="Quit" type="Button" parent="menuContainer" unique_id=954276911]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 758.0
@@ -28,7 +34,7 @@ offset_right = 297.0
 offset_bottom = 875.0
 text = "Quit"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1706136826]
+[node name="Sprite2D" type="Sprite2D" parent="menuContainer" unique_id=1706136826]
 z_index = -1
 texture_filter = 1
 texture_repeat = 1
@@ -37,8 +43,5 @@ scale = Vector2(9.989583, 9.898149)
 texture = ExtResource("1_tt5f1")
 metadata/_edit_lock_ = true
 
-[node name="gameContainer" type="Node2D" parent="." unique_id=515340582]
-z_index = 1
-
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="menuContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="menuContainer/Quit" to="." method="_on_quit_pressed"]
