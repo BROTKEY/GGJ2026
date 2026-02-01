@@ -78,6 +78,8 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		var mouse_pos = get_global_mouse_position()
+		if LeapMotionClient.hand_position != null:
+			mouse_pos = LeapMotionClient.hand_position * Vector2(1920, 1080)
 		
 		var objects: Array[Node] = $RealWorld.get_children()
 		for obj in objects:
