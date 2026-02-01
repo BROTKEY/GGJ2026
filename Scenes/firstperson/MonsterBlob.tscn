@@ -63,6 +63,7 @@ script = ExtResource("1_im0w6")
 metadata/BopitAction = "BOP"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1941309922]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fun41")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1544280131]

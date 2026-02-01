@@ -20,8 +20,5 @@ position = Vector2(1051, 941)
 [node name="MonsterBlob2" parent="." unique_id=580348850 instance=ExtResource("2_1c242")]
 position = Vector2(672, 421)
 
-[node name="MonsterBlob3" parent="." unique_id=1833114101 instance=ExtResource("4_wm8os")]
-position = Vector2(463, 932)
-
-[node name="MonsterBlob4" parent="." unique_id=234750071 instance=ExtResource("4_wm8os")]
-position = Vector2(1160, 407)
+[node name="MonsterPull" parent="." unique_id=1931281603 instance=ExtResource("4_wm8os")]
+position = Vector2(986, 382)
