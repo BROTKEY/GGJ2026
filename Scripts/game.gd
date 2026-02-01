@@ -59,9 +59,10 @@ func spawn_object(index: int, real: bool) -> void:
 		$RealWorld.add_child(real_object)
 	$ShadowWorld.add_child(shadow_object)
 
-func enter_firstperson() -> void:
+func enter_firstperson(type: String) -> void:
 	var simultaneous_scene = preload("res://Scenes/firstperson/firstperson.tscn").instantiate()
 	get_parent().add_child(simultaneous_scene)
+	simultaneous_scene.set_variant(type)
 	find_child("RenderLayer").hide()
 	ignore_input = true
 	hide()
@@ -117,4 +118,5 @@ func _input(event: InputEvent) -> void:
 					if objs.name == obj.name:
 						return
 				$ShadowWorld.remove_child(obj)
-				enter_firstperson()
+				
+				enter_firstperson(obj.name.split("_")[1])

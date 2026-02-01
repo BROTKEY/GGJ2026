@@ -52,7 +52,7 @@ sprite_frames = SubResource("SpriteFrames_fun41")
 animation = &"jumpscare"
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1544280131]
-wait_time = 25.0
+wait_time = 3.0
 
 [node name="RevealTimer" type="Timer" parent="." unique_id=1257436170]
 wait_time = 4.0
