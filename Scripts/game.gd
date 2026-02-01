@@ -68,4 +68,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
+	if LeapMotionClient.hand_position != null:
+		mouse_pos = LeapMotionClient.hand_position * Vector2(1920, 1080)
 	$RenderLayer/RealWorld.material.set("shader_parameter/mouse_position", mouse_pos)

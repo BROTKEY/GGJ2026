@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bejhq1xwd8ldr" path="res://Assets/Backdrops/room1.png" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://du746ql12jdb0" path="res://Assets/Backdrops/room1_shadow.png" id="3_wowpa"]
 [ext_resource type="Shader" uid="uid://c4io5camlsvi0" path="res://Shaders/torchlight.gdshader" id="3_wrm1d"]
-[ext_resource type="PackedScene" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://b2pmsvjxq67o8" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
 
 [sub_resource type="Gradient" id="Gradient_qxrlw"]
 interpolation_mode = 2
