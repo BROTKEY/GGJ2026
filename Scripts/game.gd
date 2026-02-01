@@ -46,8 +46,8 @@ func spawn_object(index: int, real: bool) -> void:
 	var shadow_object = object_pair[1].instantiate()
 	
 	var uuid_name = UUID.v7()
-	real_object.name = uuid_name
-	shadow_object.name = uuid_name
+	real_object.name = uuid_name + "_" + real_object.name
+	shadow_object.name = uuid_name + "_" + real_object.name
 	
 	var scale = real_object.transform.get_scale()
 	var skew = deg_to_rad(randf_range(-5,5))
