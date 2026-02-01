@@ -1,20 +1,16 @@
 [gd_scene format=3 uid="uid://cnp4cdawh2u7u"]
 
 [ext_resource type="Script" uid="uid://cvxv2mlw82qs8" path="res://Scripts/blob.gd" id="1_im0w6"]
-[ext_resource type="Texture2D" uid="uid://lugg2n2fa71l" path="res://Assets/Monster/blob/blob_0.png" id="1_nmya4"]
-[ext_resource type="Texture2D" uid="uid://3h52igyc6mnk" path="res://Assets/Monster/blob/blob_1.png" id="2_im0w6"]
-[ext_resource type="Texture2D" uid="uid://cmu3ipeebkmqf" path="res://Assets/Monster/blob/blob_2.png" id="3_35p3y"]
-[ext_resource type="Texture2D" uid="uid://cvji45ujj8tou" path="res://Assets/Monster/blob/blob_3.png" id="4_134oa"]
-[ext_resource type="Texture2D" uid="uid://bribg3hm0016v" path="res://Assets/Monster/blob/blob_4.png" id="5_2n8g4"]
-[ext_resource type="Texture2D" uid="uid://cwp7lhiymwr7k" path="res://Assets/Monster/blob/blob_5.png" id="6_1qu7y"]
-[ext_resource type="Texture2D" uid="uid://dxqwjakf7jjxm" path="res://Assets/Monster/blob/blob_6.png" id="7_mmld7"]
-[ext_resource type="Texture2D" uid="uid://bjw2l10wyktvs" path="res://Assets/Monster/blob/blob_7.png" id="8_2l5m7"]
+[ext_resource type="Texture2D" uid="uid://bsdwje7f0f8xm" path="res://Assets/Monster/blob2/BlobExistenz.png" id="2_j3frf"]
+[ext_resource type="Texture2D" uid="uid://b38ppeiionuqk" path="res://Assets/Monster/blob2/BlobBesiegtbeinah.png" id="3_rbuol"]
+[ext_resource type="Texture2D" uid="uid://cnqaplwukxm2b" path="res://Assets/Monster/blob2/BlobBesiegt.png" id="4_l8trl"]
+[ext_resource type="Texture2D" uid="uid://ccfjff5yawnd2" path="res://Assets/Monster/blob2/BlobAttacke.png" id="5_nmya4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fun41"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_nmya4")
+"texture": ExtResource("2_j3frf")
 }],
 "loop": true,
 "name": &"default",
@@ -22,36 +18,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_nmya4")
+"texture": ExtResource("2_j3frf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_im0w6")
+"texture": ExtResource("3_rbuol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_35p3y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_134oa")
+"texture": ExtResource("4_l8trl")
 }],
 "loop": true,
 "name": &"dying",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_nmya4")
+"texture": ExtResource("2_j3frf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_2n8g4")
+"texture": ExtResource("3_rbuol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_1qu7y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_mmld7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_2l5m7")
+"texture": ExtResource("5_nmya4")
 }],
 "loop": true,
 "name": &"jumpscare",
@@ -64,7 +51,10 @@ metadata/BopitAction = "BOP"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1941309922]
 texture_filter = 1
+position = Vector2(19.5, 19.5)
+scale = Vector2(2.21875, 2.21875)
 sprite_frames = SubResource("SpriteFrames_fun41")
+frame_progress = 0.5299628
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1544280131]
 wait_time = 2.5

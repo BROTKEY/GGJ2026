@@ -16,7 +16,7 @@ scale = Vector2(26.78125, 24.375)
 texture = ExtResource("1_ji2vw")
 
 [node name="MonsterBlob" parent="." unique_id=95978076 instance=ExtResource("2_tcj21")]
-position = Vector2(894, 1011)
+position = Vector2(897, 951)
 
 [node name="MonsterBlob2" parent="." unique_id=580675405 instance=ExtResource("2_tcj21")]
 position = Vector2(760, 609)
