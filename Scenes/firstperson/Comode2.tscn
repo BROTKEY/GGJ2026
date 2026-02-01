@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d1swwsw02gp1o"]
+
+[ext_resource type="Script" uid="uid://gyit2jeppw18" path="res://Scripts/selectMonsterFromFurniture.gd" id="1_hxc7d"]
+[ext_resource type="Texture2D" uid="uid://b605enkgjyirl" path="res://Assets/Furniture/comode2_shadow.png" id="2_hxc7d"]
+[ext_resource type="PackedScene" uid="uid://cnp4cdawh2u7u" path="res://Scenes/firstperson/MonsterBlob.tscn" id="3_ef584"]
+[ext_resource type="PackedScene" uid="uid://dh482188jgebd" path="res://Scenes/firstperson/MonsterPull.tscn" id="4_8hr10"]
+
+[node name="Comode" type="Node2D" unique_id=1483926918]
+script = ExtResource("1_hxc7d")
+
+[node name="commode" type="Sprite2D" parent="." unique_id=1605079999]
+texture_filter = 1
+position = Vector2(921.00006, 675)
+scale = Vector2(26.78125, 24.375)
+texture = ExtResource("2_hxc7d")
+
+[node name="MonsterBlob" parent="." unique_id=95978076 instance=ExtResource("3_ef584")]
+position = Vector2(1027, 717)
+
+[node name="MonsterBlob2" parent="." unique_id=580348850 instance=ExtResource("3_ef584")]
+position = Vector2(672, 421)
+
+[node name="MonsterBlob3" parent="." unique_id=1833114101 instance=ExtResource("4_8hr10")]
+position = Vector2(1328, 972)
+
+[node name="MonsterBlob4" parent="." unique_id=234750071 instance=ExtResource("4_8hr10")]
+position = Vector2(1160, 407)
