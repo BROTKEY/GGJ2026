@@ -67,6 +67,13 @@ func _process(delta: float) -> void:
 	var twist: bool = $"/root/BopitController".action_flags[BopItAction.TWIST]
 	var pull: bool = $"/root/BopitController".action_flags[BopItAction.PULL]
 
+	if Input.is_action_pressed("bop"):
+		bop = true
+	elif Input.is_action_pressed("twist"):
+		twist = true
+	elif Input.is_action_pressed("pull"):
+		pull = true
+
 	if bop:
 		if bopit_action == "BOP":
 			make_defeat()

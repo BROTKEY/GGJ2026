@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_qxrlw")
 
 [node name="ShadowWorld" type="SubViewport" parent="." unique_id=1911456238]
 size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Background" type="TextureRect" parent="ShadowWorld" unique_id=1397629248]
 texture_filter = 1
@@ -54,6 +55,7 @@ texture = ExtResource("3_wowpa")
 
 [node name="RealWorld" type="SubViewport" parent="." unique_id=675976716]
 size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Background" type="TextureRect" parent="RealWorld" unique_id=1399968112]
 texture_filter = 1
