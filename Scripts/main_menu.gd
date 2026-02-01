@@ -21,12 +21,17 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func show_game_over() -> void:
-	find_child("gameContainer").get_child(0).free()
+	for c in find_child("gameContainer"):
+		c.hide()
+		c.queue_free()
+
 	var simultaneous_scene = preload("res://Scenes/GameOver.tscn").instantiate()
 	find_child("gameContainer").add_child(simultaneous_scene)
 
 func return_from_game_session() -> void:
 	var gameContainer = find_child("gameContainer")
-	gameContainer.get_child(0).queue_free()
+	for c in find_child("gameContainer"):
+		c.hide()
+		c.queue_free()
 	gameContainer.hide()
 	find_child("menuContainer").show()

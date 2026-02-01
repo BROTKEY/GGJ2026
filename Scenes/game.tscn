@@ -6,18 +6,6 @@
 [ext_resource type="Shader" uid="uid://c4io5camlsvi0" path="res://Shaders/torchlight.gdshader" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b2pmsvjxq67o8" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
 
-[sub_resource type="Gradient" id="Gradient_qxrlw"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.45432693, 0.97836536, 0.99278843, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.4110577, 0.4110577, 0.4110577, 1, 0.268311, 0.268311, 0.268311, 1, 0.077896744, 0.077896744, 0.077896744, 1, 0, 0, 0, 1)
-metadata/_snap_count = 21
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wrm1d"]
-gradient = SubResource("Gradient_qxrlw")
-fill = 1
-fill_from = Vector2(0.029513888, 0.1892361)
-fill_to = Vector2(1, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
 size = Vector2(1677, 859)
 

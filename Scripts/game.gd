@@ -2,6 +2,7 @@ extends Node2D
 var objects = dir_contents("./Scenes/Tiles")
 var tiling: Vector2 = Vector2(7,4)
 const interact_radius = 120
+var ignore_input = false
 
 func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
 	var spawnArea = $Spawn/Objects.shape.size - obj_size
@@ -52,6 +53,17 @@ func spawn_object(index: int) -> void:
 	$RealWorld.add_child(real_object)
 	$ShadowWorld.add_child(shadow_object)
 
+func enter_firstperson() -> void:
+	var simultaneous_scene = preload("res://Scenes/firstperson/firstperson.tscn").instantiate()
+	get_parent().add_child(simultaneous_scene)
+	find_child("RenderLayer").hide()
+	ignore_input = false
+	hide()
+	
+func return_from_firstperson() -> void:
+	ignore_input = false
+	show()
+	find_child("RenderLayer").show()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -64,7 +76,7 @@ func _ready() -> void:
 		positions.shuffle()
 		var index = positions.pop_front()
 		spawn_object(index)
-
+	enter_firstperson()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
