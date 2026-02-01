@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bsdug7sr616ks" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://bejhq1xwd8ldr" path="res://Assets/Backdrops/room1.png" id="2_qxrlw"]
 [ext_resource type="Shader" uid="uid://c4io5camlsvi0" path="res://Shaders/torchlight.gdshader" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://drgwbyr6pxr51" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
 
 [sub_resource type="Gradient" id="Gradient_qxrlw"]
 interpolation_mode = 2
@@ -60,14 +60,14 @@ offset = Vector2(970, 970)
 texture_scale = 30.29
 height = 500.0
 
-[node name="ShadowWorld" type="SubViewport" parent="." unique_id=1911456238]
-size = Vector2i(1920, 1080)
+[node name="Spawn" type="Area2D" parent="." unique_id=144507875]
 
-[node name="Spawn" type="Area2D" parent="ShadowWorld" unique_id=144507875]
-
-[node name="Objects" type="CollisionShape2D" parent="ShadowWorld/Spawn" unique_id=1282659884]
+[node name="Objects" type="CollisionShape2D" parent="Spawn" unique_id=1282659884]
 position = Vector2(967, 547)
 shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="ShadowWorld" type="SubViewport" parent="." unique_id=1911456238]
+size = Vector2i(1920, 1080)
 
 [node name="RealWorld" type="SubViewport" parent="." unique_id=675976716]
 size = Vector2i(1920, 1080)
@@ -78,12 +78,6 @@ offset_right = 192.0
 offset_bottom = 108.0
 scale = Vector2(10, 10)
 texture = ExtResource("2_qxrlw")
-
-[node name="Spawn" type="Area2D" parent="RealWorld" unique_id=2092062423]
-
-[node name="Objects" type="CollisionShape2D" parent="RealWorld/Spawn" unique_id=1180804379]
-position = Vector2(967, 547)
-shape = SubResource("RectangleShape2D_qxrlw")
 
 [node name="RenderLayer" type="CanvasLayer" parent="." unique_id=173752947]
 
