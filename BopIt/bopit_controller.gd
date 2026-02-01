@@ -208,6 +208,9 @@ func _on_services_discovered(services: Array):
 		for characteristic in characteristics:
 			var char_uuid = characteristic.get("uuid")
 			print("[CHAR] ", char_uuid)
+	
+	# Set timeout to about a second
+	bopit_device.write_characteristic(BLE_SERVICE, CHARA_SETTING_TIMEOUT, PackedByteArray([0x00, 0x02, 0x00, 0x00]), false)
 
 
 func _on_characteristic_written(char_uuid: String):

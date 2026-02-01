@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://5nkfnn7jmn7m" path="res://Scripts/main_menu.gd" id="1_853f1"]
 [ext_resource type="Texture2D" uid="uid://bejhq1xwd8ldr" path="res://Assets/Backdrops/room1.png" id="1_tt5f1"]
 [ext_resource type="AudioStream" uid="uid://2qcqf1lf2cq" path="res://Assets/Music/music.mp3" id="3_8saeu"]
+[ext_resource type="PackedScene" uid="uid://dxttr5tv6rbhp" path="res://BopIt/bop_it_debug_menu.tscn" id="4_ghw46"]
 
 [node name="MainMenu" type="Control" unique_id=501854647]
 layout_mode = 3
@@ -12,6 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_853f1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=573009698]
+stream = ExtResource("3_8saeu")
+autoplay = true
+parameters/looping = true
 
 [node name="gameContainer" type="Node2D" parent="." unique_id=515340582]
 z_index = 1
@@ -44,10 +50,9 @@ scale = Vector2(9.989583, 9.898149)
 texture = ExtResource("1_tt5f1")
 metadata/_edit_lock_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=573009698]
-stream = ExtResource("3_8saeu")
-autoplay = true
-parameters/looping = true
+[node name="BopItDebugMenu" parent="." unique_id=1291644865 instance=ExtResource("4_ghw46")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="menuContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="menuContainer/Quit" to="." method="_on_quit_pressed"]

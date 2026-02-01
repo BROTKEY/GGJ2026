@@ -1,9 +1,12 @@
 extends Control
 
 
+@onready var debug_menu = $BopItDebugMenu
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$BopItDebugMenu.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +34,7 @@ func _on_quit_pressed() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_key"):
-		var denug_menu = preload("res://BopIt/bop_it_debug_menu.tscn").instantiate()
+		debug_menu.visible = !debug_menu.visible
 
 func show_game_over() -> void:
 	for c in find_child("gameContainer").get_children():
