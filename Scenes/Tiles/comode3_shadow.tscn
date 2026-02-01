@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b4dlcdbr2mrx2"]
+[gd_scene format=3 uid="uid://emp2wyc3xrj7"]
 
-[ext_resource type="Texture2D" uid="uid://bgdvxusdfutow" path="res://Assets/Furniture/comode2.png" id="1_8734l"]
+[ext_resource type="Texture2D" uid="uid://b1vuri5gpxiea" path="res://Assets/Furniture/comode3_s.png" id="1_uxbf7"]
 
 [node name="Comode" type="Node2D" unique_id=161888056]
 scale = Vector2(5, 5)
@@ -10,4 +10,4 @@ light_mask = 2
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_8734l")
+texture = ExtResource("1_uxbf7")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfailmikxxwm3"]
 
-[ext_resource type="Texture2D" uid="uid://vkiy52u4fjbg" path="res://Assets/Furniture/comode2.png" id="1_c5nuc"]
+[ext_resource type="Texture2D" uid="uid://b605enkgjyirl" path="res://Assets/Furniture/comode2_shadow.png" id="1_c5nuc"]
 
 [node name="Comode" type="Node2D" unique_id=161888056]
 scale = Vector2(5, 5)
