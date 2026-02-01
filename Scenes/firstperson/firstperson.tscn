@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://1p3wnreq0edw"]
+
+[ext_resource type="Texture2D" uid="uid://dlwxlmf3mk7uy" path="res://Assets/tiltedFloor.png" id="2_pjfxw"]
+[ext_resource type="Texture2D" uid="uid://ijn8v87taijq" path="res://Assets/grayWall.png" id="3_bhrd8"]
+[ext_resource type="PackedScene" uid="uid://b4ml5fu5x22ha" path="res://Scenes/firstperson/Comode.tscn" id="3_nxwrw"]
+
+[node name="Firstperson" type="Node2D" unique_id=1083294289]
+
+[node name="floor" type="Sprite2D" parent="." unique_id=607483764]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(947.99994, 949)
+scale = Vector2(22.136362, 3.2619052)
+texture = ExtResource("2_pjfxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2119175698]
+z_index = -2
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(979, 451.5)
+scale = Vector2(30.71875, 14.234375)
+texture = ExtResource("3_bhrd8")
+
+[node name="Comode" parent="." unique_id=1483926918 instance=ExtResource("3_nxwrw")]

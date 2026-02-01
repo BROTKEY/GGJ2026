@@ -9,7 +9,7 @@ func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
 	var y = index % int(tiling.y)
 	var pix_x = origin.x + x* spawnArea.x/(tiling.x-1)
 	var pix_y = origin.y + y* spawnArea.y/(tiling.y-1)
-	
+
 	return Vector2(pix_x, pix_y)
 
 func dir_contents(path) -> Array:
@@ -36,7 +36,8 @@ func dir_contents(path) -> Array:
 		print("An error occurred when trying to access the path.")
 
 	return scene_loads
-	
+
+
 func spawn_object(index: int) -> void:
 	var object_pair = objects.pick_random()
 	var real_object = object_pair[0].instantiate()
@@ -47,11 +48,10 @@ func spawn_object(index: int) -> void:
 	var transf = Transform2D(0, scale, 0, gen_random_pos_in_spawn_area(size, index))
 	real_object.transform = transf
 	shadow_object.transform = transf
-	real_object.material = $Spawn/RealWorld.material
-	$Spawn/RealWorld.add_child(real_object)
-	$Spawn/ShadowWorld.add_child(shadow_object)
-	
-	
+	$RealWorld.add_child(real_object)
+	$ShadowWorld.add_child(shadow_object)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var positions = Array(range(0, tiling.y))
@@ -68,6 +68,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
-	$Spawn/RealWorld.material.set("shader_parameter/mouse_position", mouse_pos)
-	for child in $Spawn/RealWorld.get_children():
-		child.material.set("shader_parameter/mouse_position", mouse_pos)
+	$RenderLayer/RealWorld.material.set("shader_parameter/mouse_position", mouse_pos)
