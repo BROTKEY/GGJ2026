@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsdug7sr616ks" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://bejhq1xwd8ldr" path="res://Assets/Backdrops/room1.png" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://du746ql12jdb0" path="res://Assets/Backdrops/room1_shadow.png" id="3_wowpa"]
 [ext_resource type="Shader" uid="uid://c4io5camlsvi0" path="res://Shaders/torchlight.gdshader" id="3_wrm1d"]
 [ext_resource type="PackedScene" path="res://Scenes/example_hand.tscn" id="4_3dryh"]
 
@@ -30,7 +31,7 @@ viewport_path = NodePath("HandViewport")
 resource_local_to_scene = true
 shader = ExtResource("3_wrm1d")
 shader_parameter/tex_mask = SubResource("ViewportTexture_wowpa")
-shader_parameter/radius = 100.0
+shader_parameter/radius = 250.0
 shader_parameter/mouse_position = Vector2(0, 0)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1l0tm"]
@@ -68,6 +69,13 @@ shape = SubResource("RectangleShape2D_qxrlw")
 
 [node name="ShadowWorld" type="SubViewport" parent="." unique_id=1911456238]
 size = Vector2i(1920, 1080)
+
+[node name="Background" type="TextureRect" parent="ShadowWorld" unique_id=1397629248]
+texture_filter = 1
+offset_right = 192.0
+offset_bottom = 108.0
+scale = Vector2(10, 10)
+texture = ExtResource("3_wowpa")
 
 [node name="RealWorld" type="SubViewport" parent="." unique_id=675976716]
 size = Vector2i(1920, 1080)

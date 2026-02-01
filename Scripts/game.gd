@@ -36,7 +36,8 @@ func dir_contents(path) -> Array:
 		print("An error occurred when trying to access the path.")
 
 	return scene_loads
-	
+
+
 func spawn_object(index: int) -> void:
 	var object_pair = objects.pick_random()
 	var real_object = object_pair[0].instantiate()
@@ -49,8 +50,8 @@ func spawn_object(index: int) -> void:
 	shadow_object.transform = transf
 	$RealWorld.add_child(real_object)
 	$ShadowWorld.add_child(shadow_object)
-	
-	
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var positions = Array(range(0, tiling.y))
