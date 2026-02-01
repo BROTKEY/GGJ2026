@@ -40,7 +40,7 @@ func dir_contents(path) -> Array:
 	return scene_loads
 
 
-func spawn_object(index: int) -> void:
+func spawn_object(index: int, real: bool) -> void:
 	var object_pair = objects.pick_random()
 	var real_object = object_pair[0].instantiate()
 	var shadow_object = object_pair[1].instantiate()
@@ -55,7 +55,8 @@ func spawn_object(index: int) -> void:
 	var transf = Transform2D(0, scale, 0, gen_random_pos_in_spawn_area(size, index))
 	real_object.transform = transf
 	shadow_object.transform = transf
-	$RealWorld.add_child(real_object)
+	if real:
+		$RealWorld.add_child(real_object)
 	$ShadowWorld.add_child(shadow_object)
 
 func enter_firstperson() -> void:
@@ -80,7 +81,7 @@ func _ready() -> void:
 	for i in 8:
 		positions.shuffle()
 		var index = positions.pop_front()
-		spawn_object(index)
+		spawn_object(index, i % 2 == 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -97,7 +98,7 @@ func _input(event: InputEvent) -> void:
 		if LeapMotionClient.hand_position != null:
 			mouse_pos = LeapMotionClient.hand_position * Vector2(1920, 1080)
 		
-		var objects: Array[Node] = $RealWorld.get_children()
+		var objects: Array[Node] = $ShadowWorld.get_children()
 		for obj in objects:
 			if obj.name == "Background":
 				continue
@@ -105,11 +106,11 @@ func _input(event: InputEvent) -> void:
 			var position = obj.position + size / 2
 			var distance = mouse_pos.distance_to(position)
 			if distance < interact_radius:
-				var objectss: Array[Node] = $ShadowWorld.get_children()
+				var objectss: Array[Node] = $RealWorld.get_children()
 				for objs in objectss:
 					if objs.name == obj.name:
-						$ShadowWorld.remove_child(objs)
-				$RealWorld.remove_child(obj)
+						return
+				$ShadowWorld.remove_child(obj)
 				enter_firstperson()
 				
 			
