@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://edlacu52fe5r"
-path="res://.godot/imported/table_withered.png-85a536b79c67d8064c8afaa33fe631ce.ctex"
+path="res://.godot/imported/table_withered.png-3087b764a01565c3f4a5b940f521433a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/table_withered.png"
-dest_files=["res://.godot/imported/table_withered.png-85a536b79c67d8064c8afaa33fe631ce.ctex"]
+source_file="res://Assets/Furniture/table_withered.png"
+dest_files=["res://.godot/imported/table_withered.png-3087b764a01565c3f4a5b940f521433a.ctex"]
 
 [params]
 

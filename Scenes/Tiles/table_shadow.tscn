@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://djl1ckmoke2rx"]
+
+[ext_resource type="Texture2D" uid="uid://edlacu52fe5r" path="res://Assets/Furniture/table_withered.png" id="1_1dr50"]
+
+[node name="Table" type="Node2D" unique_id=161888056]
+scale = Vector2(5, 5)
+
+[node name="Regular" type="TextureRect" parent="." unique_id=1186291024]
+light_mask = 2
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1dr50")

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dfailmikxxwm3"]
+
+[ext_resource type="Texture2D" uid="uid://vkiy52u4fjbg" path="res://Assets/Furniture/comode2.png" id="1_c5nuc"]
+
+[node name="Comode" type="Node2D" unique_id=161888056]
+scale = Vector2(5, 5)
+
+[node name="Regular" type="TextureRect" parent="." unique_id=1186291024]
+light_mask = 2
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_c5nuc")
