@@ -62,8 +62,10 @@ class LeapListener(leap.Listener):
     hand_data = {
         "left": {
             "pinch_distance": 0,
+            "pinch_strength": 0,
             "palm": {
                 "position": (0, 0, 0),
+                "stabilized_position": (0, 0, 0),
                 "normal": (0, 0, 0),
                 "direction": (0, 0, 0),
                 "orientation": (0, 0, 0, 0)
@@ -181,8 +183,10 @@ class LeapListener(leap.Listener):
         },
         "right": {
             "pinch_distance": 0,
+            "pinch_strength": 0,
             "palm": {
                 "position": (0, 0, 0),
+                "stabilized_position": (0, 0, 0),
                 "normal": (0, 0, 0),
                 "direction": (0, 0, 0),
                 "orientation": (0, 0, 0, 0)
@@ -314,9 +318,11 @@ class LeapListener(leap.Listener):
 
     def on_tracking_event(self, event: TrackingEvent):
         for hand in event.hands:
-            handt = "left" if str(hand.type) == "HandType.Left" else "right"
+            handt = "left" if str(hand.type) == "HandType.Left" else "left" # TODO: VERY IMPORTANT THAT THIS HAS TO BE CHANGED IF USED OUTSIDE GGJ2026 DON'T BLAME ME, I WARNED YOU
 
-            self.hand_data["pinch_distance"] = hand.pinch_distance
+            for prop in ["pinch_distance", "pinch_strength"]:
+                self.hand_data[handt][prop] = getattr(hand, prop)
+
             for prop in self.hand_data[handt]["palm"].keys():
                 vec = getattr(hand.palm, prop)
                 if prop == "orientation":

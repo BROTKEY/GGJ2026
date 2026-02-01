@@ -5,6 +5,7 @@ var _status: int = 0
 var _stream: StreamPeerTCP = StreamPeerTCP.new()
 
 var hand_data = null
+var hand_position: Vector2 = Vector2(0, 0)
 
 func open(host: String, port: int) -> bool:
 	print("LeapMotion: Connecting to %s:%d" % [host, port])
@@ -34,5 +35,10 @@ func poll() -> bool:
 			
 			if error == OK:
 				hand_data = json.data
+				
+				var pos = hand_data["left"]["palm"]["position"]
+				hand_position = Vector2(clamp((pos[0]+80)/160, 0, 1), clamp((pos[2]+45)/90, 0, 1))
+				print(hand_position)
+				
 				return true
 	return false

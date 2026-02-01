@@ -1,8 +1,9 @@
 extends Node3D
 
 @onready var skele = $Hand/RootNode/Armature/Skeleton3D
-const hand = "right"
+const hand = "left"
 const idmap = {1: "thumb", 4: "index", 8: "middle", 12: "ring", 16: "pinky"}
+const pinch_threshold = 0.8
 
 func to_quat(array: Array) -> Quaternion:
 	return Quaternion(array[0], array[1], array[2], array[3])
@@ -27,6 +28,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var new_data = LeapMotionClient.poll()
 	if new_data:
+		var pinch_strength = LeapMotionClient.hand_data[hand]["pinch_strength"]
+		
+		var event = InputEventAction.new()
+		event.action = "interact"
+		event.pressed = (pinch_strength > pinch_threshold)
+		Input.parse_input_event(event)
+		
 		var palm_ori = LeapMotionClient.hand_data[hand]["palm"]["orientation"]
 		var palm_quat = to_quat(palm_ori)
 		#skele.set_bone_pose_rotation(0, palm_quat)
@@ -39,7 +47,7 @@ func _process(_delta: float) -> void:
 				var bon = LeapMotionClient.hand_data[hand][idmap[finger_id]][bone]
 				var rot = bon["rotation"]
 				var quat = to_quat(rot)
-				skele.set_bone_pose_rotation(finger_id+i, quat)
+				skele.set_bone_pose_rotation(finger_id+i, quat+acc_quat)
 				acc_quat += quat
 				i += 1
 		pass
