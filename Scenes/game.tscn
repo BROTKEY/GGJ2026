@@ -37,6 +37,8 @@ shader_parameter/mouse_position = Vector2(0, 0)
 [sub_resource type="ViewportTexture" id="ViewportTexture_1l0tm"]
 viewport_path = NodePath("RealWorld")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wowpa"]
+
 [node name="Game" type="Node2D" unique_id=312500295]
 texture_filter = 1
 script = ExtResource("1_ebmjs")
@@ -45,21 +47,6 @@ script = ExtResource("1_ebmjs")
 render_target_update_mode = 4
 
 [node name="ExampleHand" parent="HandViewport" unique_id=608143162 instance=ExtResource("4_3dryh")]
-
-[node name="Shading" type="CanvasModulate" parent="." unique_id=835482339]
-
-[node name="MoodLight" type="PointLight2D" parent="." unique_id=707887225]
-position = Vector2(-0.07167971, -0.066110805)
-scale = Vector2(0.9911264, 0.55436355)
-color = Color(0.14117648, 0.34901962, 0, 1)
-energy = 1.24
-range_item_cull_mask = 3
-shadow_enabled = true
-shadow_filter = 2
-texture = SubResource("GradientTexture2D_wrm1d")
-offset = Vector2(970, 970)
-texture_scale = 30.29
-height = 500.0
 
 [node name="Spawn" type="Area2D" parent="." unique_id=144507875]
 
@@ -105,3 +92,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_1l0tm")
+
+[node name="HandCollider" type="Area2D" parent="." unique_id=1449639379]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandCollider" unique_id=1580199152]
+shape = SubResource("CircleShape2D_wowpa")

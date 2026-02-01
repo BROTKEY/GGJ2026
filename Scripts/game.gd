@@ -1,6 +1,7 @@
 extends Node2D
 var objects = dir_contents("./Scenes/Tiles")
 var tiling: Vector2 = Vector2(7,4)
+const interact_radius = 120
 
 func gen_random_pos_in_spawn_area(obj_size: Vector2, index: int):
 	var spawnArea = $Spawn/Objects.shape.size - obj_size
@@ -71,3 +72,22 @@ func _process(_delta: float) -> void:
 	if LeapMotionClient.hand_position != null:
 		mouse_pos = LeapMotionClient.hand_position * Vector2(1920, 1080)
 	$RenderLayer/RealWorld.material.set("shader_parameter/mouse_position", mouse_pos)
+	$HandCollider.position = mouse_pos
+	
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		var mouse_pos = get_global_mouse_position()
+		
+		var objects: Array[Node] = $RealWorld.get_children()
+		for obj in objects:
+			if obj.name == "Background":
+				continue
+			var size = obj.transform.get_scale() * obj.get_child(0).texture.get_size()
+			var position = obj.position + size / 2
+			var distance = mouse_pos.distance_to(position)
+			if distance < interact_radius:
+				print("UWUWUWUW")
+			
+		
+		
