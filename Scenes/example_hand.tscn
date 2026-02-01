@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://drgwbyr6pxr51"]
+
+[ext_resource type="PackedScene" uid="uid://bsmwb3n6fsm3j" path="res://assets/Models/rigged_hand.glb" id="2_skt2t"]
+
+[sub_resource type="Environment" id="Environment_skt2t"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+
+[node name="ExampleHand" type="Node3D" unique_id=608143162]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=368481007]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -0.5437753, 16.846237, 0.25675106)
+environment = SubResource("Environment_skt2t")
+projection = 1
+size = 11.687
+
+[node name="Hand" parent="." unique_id=1218235148 instance=ExtResource("2_skt2t")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
