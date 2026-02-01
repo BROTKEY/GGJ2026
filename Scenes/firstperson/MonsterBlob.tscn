@@ -65,6 +65,10 @@ script = ExtResource("1_im0w6")
 sprite_frames = SubResource("SpriteFrames_fun41")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1544280131]
+wait_time = 25.0
+
+[node name="RevealTimer" type="Timer" parent="." unique_id=1257436170]
+wait_time = 4.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="AnimationFinished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="AnimationFinished"]
