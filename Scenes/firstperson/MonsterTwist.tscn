@@ -48,7 +48,7 @@ animations = [{
 
 [node name="MonsterPull" type="Node2D" unique_id=95978076]
 script = ExtResource("1_jnlya")
-metadata/BopitAction = "PULL"
+metadata/BopitAction = "TWIST"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1941309922]
 texture_filter = 1
