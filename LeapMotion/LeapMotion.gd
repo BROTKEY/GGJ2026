@@ -38,7 +38,6 @@ func poll() -> bool:
 				
 				var pos = hand_data["left"]["palm"]["position"]
 				hand_position = Vector2(clamp((pos[0]+120)/240, 0, 1), clamp((pos[2]+67.5)/135, 0, 1))
-				print(hand_position)
 				
 				return true
 	return false
